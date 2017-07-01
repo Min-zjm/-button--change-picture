@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.box{
+				width:500px;
+				height:500px;
+				border:1px solid red;
+			}
+			#aa {
+				width:222px;
+				height:177px;
+				background:yellowgreen;
+				position:absolute;
+				background:url(img/9.jpg);
+				background-position: -51px 0px;
+				
+			}
+			#aa:hover{
+					 background-position: -164px -73px;
+					 transition: background-position 0.9s;
+				} 
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			 <div id="aa"></div>
+		</div>
+		
+		
+		 <script type="text/javascript">
+	    	var ca =document.getElementById('aa');
+		 	/*	ca.addEventListener('click',start)
+	 	         function start(){
+	 	     	   console.log("开始");
+	 	        }
+	 	         ca.addEventListener('remove',stop);
+	 	         function stop(){
+	 	         	console.log("停止");
+	 	        }
+	 	    */
+		 	   ca.addEventListener('mousedown',start);  //鼠标按下
+		 	   ca.addEventListener('mouseup',stop);     //鼠标-抬起
+		 	   function start(e){
+		 	   	  if(e.button==0){       //鼠标左键-0=e.button
+		 	   	  	//console.log(e.button)
+		 	   	  	  document.addEventListener('mousemove',move);//添加鼠标-移动事件
+		 	   	  	  ca.style.cursor="move";    //光标出现
+		 	   	   }
+		 	   	
+		 	   }
+		 	   function stop(e){
+		 	   	   if(e.button==0){    // 那个键的位置
+		 	   	   	 document.removeEventListener('mousemove',move); //去除鼠标-移动事件
+		 	   	   	 ca.style.cursor="default";   // 光标消失
+		 	   	   }
+		 	   	
+		 	   }
+		 	function move(e){
+		 		var x=e.clientX;   //获取鼠标的x坐标
+		 		var y=e.clientY;
+		 		                // 获取元素宽度
+		 		 var w=aa.offsetWidth/2;    //id-aa **
+		 		 var h=aa.offsetHeight/2;
+		 		  ca.style.left=x-w+"px";    //marjinleft--absolute:left **
+		 		  ca.style.top=y-h+"px";     //图形中光标的位置 **
+		 		  
+		 	}
+		 </script>
+	</body>
+</html>
